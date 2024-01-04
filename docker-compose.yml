@@ -8,7 +8,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
   db:
     image: postgres
     restart: always
@@ -27,7 +26,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
   proxy:
     image: nginx
     volumes:
@@ -39,10 +37,8 @@ services:
       - 80:80
     depends_on:
       - backend
-
 volumes:
   db-data:
-
 secrets:
   db-password:
     file: db/password.txt
