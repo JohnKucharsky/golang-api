@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    secrets:
+      - db-password
+    user: postgres
+    environment:
+      - POSTGRES_DB=data
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
+
+secrets:
+  db-password:
+    file: ../db/password.txt
