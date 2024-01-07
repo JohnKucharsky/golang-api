@@ -1,2 +1,2 @@
-backend/*.env
-backend/tmp
+api/*.env
+api/tmp
